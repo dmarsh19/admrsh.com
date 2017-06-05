@@ -1,9 +1,9 @@
 [Unit]
-Description="uWSGI server instance configured to serve flask_uwsgi"
+Description="uWSGI server instance configured to serve admrsh.com"
 After=syslog.target
 
 [Service]
-ExecStart=/usr/local/bin/uwsgi --ini /var/www/flask_uwsgi/flask_uwsgi.ini
+ExecStart=/usr/local/bin/uwsgi --ini /var/www/admrsh.com_project/admrsh.com.ini
 # Requires systemd version 211 or newer
 RuntimeDirectory=uwsgi
 KillSignal=SIGQUIT
