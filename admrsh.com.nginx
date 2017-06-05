@@ -9,4 +9,7 @@ server {
         include uwsgi_params;
         uwsgi_pass unix:/tmp/admrsh.com.sock;
     }
+    location /static {
+        root /var/www/admrsh.com_project/admrsh;
+    }
 }
