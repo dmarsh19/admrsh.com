@@ -6,9 +6,7 @@ After=syslog.target
 ExecStart=/usr/local/bin/uwsgi --ini /var/www/admrsh.com_project/admrsh.com.ini
 # Requires systemd version 211 or newer
 RuntimeDirectory=uwsgi
-KillSignal=SIGQUIT
-ExecReload=/bin/kill -HUP %MAINPID
-ExecStop=/bin/kill -INT $MAINPID
+KillSignal=SIGTERM
 Restart=always
 Type=notify
 StandardError=syslog
