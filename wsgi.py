@@ -1,6 +1,6 @@
 """
 """
-from admrsh.com import app
+from admrsh import app
 
 if __name__ == "__main__":
     app.run()
