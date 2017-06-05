@@ -4,10 +4,54 @@
   <head>
     <title>admrsh</title>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- responsive, change scale based on screen size -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- bootstrap -->
+    <link href={{ url_for('static', filename='css/bootstrap.min.css') }} rel="stylesheet" media="screen">
   </head>
   <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href={{ url_for('base.main') }}>
+            <span class="glyphicon glyphicon-home"></span>admrsh</a>
+        </div> <!-- /.navbar-header -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="nav navbar-nav">
+            <!--
+            <li class="active"><a href={{ url_for('base.main') }}>SVR-1L</a></li>
+            <li><a href={{ url_for('atmo.atmo') }}>atmo</a></li>
+            <li><a href={{ url_for('avr.avr') }}>avr</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">api<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href={{ url_for('api.avr') }}>avr</a></li>
+                <li><a href={{ url_for('api.atmo', period='now' ) }}>atmo_now</a></li>
+                <li><a href={{ url_for('api.atmo') }}>atmo_all</a></li>
+                <li><a href={{ url_for('api.atmo', period = 'week') }}>atmo_week</a></li>
+              </ul>
+            </li> <!- - /.dropdown - ->
+            -->
+          </ul>
+        </div> <!-- /.navbar-collapse -->
+      </div> <!-- /.container-fluid -->
+    </nav>
+
+
+    <!-- ADDITIONAL GLOBALLY REQUIRED LIBRARIES (some apps may require more in their own static) -->
+    <!-- can't move to end of body to increase page load performance because of template inheritance-->
+    <script src={{ url_for('static', filename='js/jquery-3.2.1.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/bootstrap.min.js') }}></script>
+
     <div class="container">
       {% for message in get_flashed_messages() %}
         <div class="flash">{{ message }}</div>
