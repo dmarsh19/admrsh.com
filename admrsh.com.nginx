@@ -1,13 +1,12 @@
 server {
     listen 80;
-    #server_name localhost;
     server_name ec2-54-165-237-49.compute-1.amazonaws.com;
-    # Define the specified charset to the “Content-Type” response header field
+    # Define the specified charset to the "Content-Type" response header field
     charset utf-8;
 
     # Configure NGINX to deliver static content from the specified folder
-    location /static {
-        alias /var/www/admrsh.com_project/admrsh/static;
+    location /static/ {
+        alias /var/www/admrsh.com_project/admrsh/static/;
     }
 
     location / {

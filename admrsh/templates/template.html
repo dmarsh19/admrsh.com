@@ -8,7 +8,8 @@
     <!-- responsive, change scale based on screen size -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<!--    <link href="static/css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
   </head>
   <body>
     <nav class="navbar navbar-inverse">
@@ -35,8 +36,8 @@
 
     <!-- ADDITIONAL GLOBALLY REQUIRED LIBRARIES (some apps may require more in their own static) -->
     <!-- can't move to end of body to increase page load performance because of template inheritance-->
-    <script src={{ url_for('static', filename='js/jquery-3.2.1.min.js') }}></script>
-    <script src={{ url_for('static', filename='js/bootstrap.min.js') }}></script>
+    <script src="static/js/jquery-3.2.1.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
 
     <div class="container">
       {% for message in get_flashed_messages() %}
