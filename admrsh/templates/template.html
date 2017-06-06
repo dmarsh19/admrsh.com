@@ -38,17 +38,21 @@
       <script src="static/js/jquery-3.2.1.min.js"></script>
       <script src="static/js/bootstrap.min.js"></script>
 
-      <div class="container">
-        {% for message in get_flashed_messages() %}
-          <div class="flash">{{ message }}</div>
-        {% endfor %}
-        {% if error %}
-          <p class="error"><strong>Error:</strong> {{ error }}
-        {% endif %}
-        <!-- inheritance -->
-        {% block content %}
-        {% endblock %}
-        <!-- end inheritance -->
+      <div id="main">
+        <div id="notify">
+          {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+          {% endfor %}
+          {% if error %}
+            <p class="error"><strong>Error:</strong> {{ error }}
+          {% endif %}
+        </div>
+        <div id="content">
+          <!-- inheritance -->
+          {% block content %}
+          {% endblock %}
+          <!-- end inheritance -->
+        </div>
       </div>
 
     </div>
