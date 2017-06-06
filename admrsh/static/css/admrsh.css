@@ -1,3 +1,33 @@
 body {
   padding-top: 70px;
 }
+
+.navbar-default {
+  background-color: #ffffff;
+}
+
+/*uncollapsed navbar*/
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+/*dropdown*/
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+/*collapsed navbar; i.e. button*/
+.navbar .navbar-toggle {
+  width: 100%;
+  float: none;
+  margin-right: 0;
+  border-color: transparent;
+}
+.navbar-toggle .icon-bar {
+  margin: auto;
+}
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+    background-color: transparent;
+}
