@@ -23,6 +23,7 @@ apply the rotation 'X' on default .navbar-toggle
 since on load it is .navbar-toggle.collapsed*/
 .navbar-toggle {
   width: 100%;
+  float: none;
   border: none;
   background: transparent !important;
 }
@@ -61,4 +62,9 @@ since on load it is .navbar-toggle.collapsed*/
 .navbar-toggle.collapsed .bottom-bar {
   -webkit-transform: rotate(0);
           transform: rotate(0);
+}
+
+#footer {
+  background-color: black;
+  color: white;
 }
