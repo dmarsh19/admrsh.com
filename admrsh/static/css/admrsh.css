@@ -18,17 +18,47 @@ body {
   text-align: center;
 }
 
-/*collapsed navbar; i.e. button*/
-.navbar .navbar-toggle {
+/*collapsed navbar; i.e. button
+apply the rotation 'X' on default .navbar-toggle
+since on load it is .navbar-toggle.collapsed*/
+.navbar-toggle {
   width: 100%;
-  float: none;
-  margin-right: 0;
-  border-color: transparent;
+  border: none;
+  background: transparent !important;
+}
+.navbar-toggle:hover {
+  background: transparent !important;
 }
 .navbar-toggle .icon-bar {
   margin: auto;
+  width: 22px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
-.navbar-default .navbar-toggle:focus,
-.navbar-default .navbar-toggle:hover {
-    background-color: transparent;
+.navbar-toggle .top-bar {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: 10% 10%;
+          transform-origin: 10% 10%;
+}
+.navbar-toggle .middle-bar {
+  opacity: 0;
+}
+.navbar-toggle .bottom-bar {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transform-origin: 10% 90%;
+          transform-origin: 10% 90%;
+}
+/*Collapsed behavior - revert back to regular menu button*/
+.navbar-toggle.collapsed .top-bar {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.navbar-toggle.collapsed .middle-bar {
+  opacity: 1;
+}
+.navbar-toggle.collapsed .bottom-bar {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
 }
