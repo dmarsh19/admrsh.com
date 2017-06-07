@@ -18,20 +18,20 @@
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
               <span class="sr-only">menu</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+              <span class="icon-bar top-bar"></span>
+              <span class="icon-bar middle-bar"></span>
+              <span class="icon-bar bottom-bar"></span>
             </button>
           </div> <!-- /.navbar-header -->
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="top-navbar">
+          <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
               <li><a href={{ url_for('base.home') }}>home</a></li>
               <li><a href="static/derek_marsh_resume.pdf">resume</a></li>
               <li><a href={{ url_for('base.code') }}>code samples</a></li>
-              <li><a href={{ url_for('base.projects') }}>projects</a></li>
+              <li><a href={{ url_for('base.home', _anchor="projects") }}>projects</a></li>
               <li><a href={{ url_for('base.contact') }}>contact</a></li>
             </ul>
           </div> <!-- /.navbar-collapse -->
@@ -42,6 +42,13 @@
       <!-- can't move to end of body to increase page load performance because of template inheritance-->
       <script src="static/js/jquery-3.2.1.min.js"></script>
       <script src="static/js/bootstrap.min.js"></script>
+
+      <script type=text/javascript>
+        $('#navbar').on('click', function() {
+          console.log('clicked #navbar');
+          $('.navbar-collapse').collapse('hide');
+        });
+      </script>
 
       <div id="main">
         <div id="notify">
