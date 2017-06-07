@@ -29,6 +29,7 @@
           <div class="collapse navbar-collapse" id="top-navbar">
             <ul class="nav navbar-nav">
               <li><a href={{ url_for('base.home') }}>home</a></li>
+              <li><a href="static/derek_marsh_resume.pdf">resume</a></li>
               <li><a href={{ url_for('base.code') }}>code samples</a></li>
               <li><a href={{ url_for('base.projects') }}>projects</a></li>
               <li><a href={{ url_for('base.contact') }}>contact</a></li>
@@ -56,9 +57,9 @@
           {% block content %}
           {% endblock %}
           <!-- end inheritance -->
-        </div>
-      </div>
+        </div> <!-- /.content -->
+      </div> <!-- /.main -->
 
-    </div>
+    </div> <!-- /.container -->
   </body>
 </html>
