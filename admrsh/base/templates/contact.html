@@ -1,15 +1,17 @@
 <!-- view (MVC) -->
 {% extends "template.html" %}
 {% block content %}
-  <p>Contact</p>
-  <form>
-    <div class="form-group">
-      <label for="email_text">Email message</label>
-      <textarea class="form-control" id="email_text" placeholder="Text input" rows="3"></textarea>
-    </div>
-    <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Send</button>
-    </div>
-  </form>
+  <div class="content">
+    <p>Contact</p>
+    <form>
+      <div class="form-group">
+        <label for="email_text">Email message</label>
+        <textarea class="form-control" id="email_text" placeholder="Text input" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Send</button>
+      </div>
+    </form>
+  </div>
 {% endblock %}
