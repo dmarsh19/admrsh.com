@@ -7,6 +7,16 @@ body {
   background-color: #ffffff;
 }
 
+#footer {
+  background-color: #32302F;
+  color: white;
+}
+
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 /*uncollapsed navbar*/
 .navbar .navbar-nav {
   display: inline-block;
@@ -62,9 +72,4 @@ since on load it is .navbar-toggle.collapsed*/
 .navbar-toggle.collapsed .bottom-bar {
   -webkit-transform: rotate(0);
           transform: rotate(0);
-}
-
-#footer {
-  background-color: #32302F;
-  color: white;
 }
