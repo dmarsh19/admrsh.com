@@ -50,7 +50,7 @@
         });
       </script>
 
-      <div id="main">
+      <div id="all">
         <div id="notify">
           {% for message in get_flashed_messages() %}
             <div class="flash">{{ message }}</div>
@@ -59,16 +59,16 @@
             <p class="error"><strong>Error:</strong> {{ error }}
           {% endif %}
         </div>
-        <div id="content">
+        <div id="main">
           <!-- inheritance -->
           {% block content %}
           {% endblock %}
           <!-- end inheritance -->
-        </div> <!-- /.content -->
+        </div> <!-- /.main -->
         <div id="footer">
           <p>footer</p>
         </div>
-      </div> <!-- /.main -->
+      </div> <!-- /.all -->
 
     </div> <!-- /.container -->
   </body>
