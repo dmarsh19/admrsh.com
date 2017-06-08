@@ -28,7 +28,7 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
-              <li><a href={{ url_for('base.home', _anchor="summary") }}>home</a></li>
+              <li><a href={{ url_for('base.home') }}>home</a></li>
               <li><a href="static/derek_marsh_resume.pdf">resume</a></li>
               <li><a href={{ url_for('base.code') }}>code samples</a></li>
               <li><a href={{ url_for('base.home', _anchor="projects") }}>projects</a></li>
@@ -43,6 +43,7 @@
       <script src="static/js/jquery-3.2.1.min.js"></script>
       <script src="static/js/bootstrap.min.js"></script>
 
+      <!-- always collapse the navbar even when navigating based on anchors -->
       <script type=text/javascript>
         $('#navbar').on('click', function() {
           console.log('clicked #navbar');
@@ -70,6 +71,6 @@
         </div>
       </div> <!-- /.all -->
 
-    </div> <!-- /.container -->
+    </div> <!-- /.container-fluid -->
   </body>
 </html>
