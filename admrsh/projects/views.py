@@ -6,5 +6,5 @@ from . import projects
 
 
 @projects.route('/socketchat')
-def socketchat():
-    return render_template('projects.html', title='Socket Chat')
+def socket_chat():
+    return render_template('socket_chat.html', title='Socket Chat')
