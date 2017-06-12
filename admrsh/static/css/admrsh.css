@@ -5,10 +5,13 @@ body {
 
 /* apply to everything within content, but not on content itself*/
 .content {
-  height: 1000px;
   padding-top: 70px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.onepage {
+  height: 1000px;
 }
 
 #footer {
