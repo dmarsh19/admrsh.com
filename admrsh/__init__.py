@@ -25,6 +25,8 @@ app.config.from_object('settings')
 
 # import modules (have to import at the end after all app configurations are instantiated)
 from .base import base
+from .projects import projects
 
 # register the individual blueprints (modules) to the app
 app.register_blueprint(base)
+app.register_blueprint(projects, url_prefix='/projects')
