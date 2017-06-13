@@ -4,8 +4,29 @@
   <div class="content onepage" id="summary">
     <h1 align="center">Welcome to admrsh.com</h1>
   </div>
-  <div class="content onepage" id="projects" style="background-color: #8f8f8f;">
+  <div class="content onepage" id="code" style="background-color: #8f8f8f;">
+    <h1 align="center">Code Samples</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <a href={{ url_for('code.infrastructure') }} class="thumbnail">
+          <img src="..." alt="Infrastructure">
+        </a>
+      </div>
+      <div class="col-md-6">
+        <a href="#" class="thumbnail">
+          <img src="..." alt="...">
+        </a>
+      </div>
+      <div class="col-md-6 col-md-offset-3">
+        <a href="#" class="thumbnail">
+          <img src="..." alt="...">
+        </a>
+      </div>
+    </div> <!-- /.row -->
+  </div> <!-- /.code -->
+  <div class="content onepage" id="projects">
     <h1 align="center">Projects</h1>
+    <h3 align="center">For things a little more visually pretty than just code (but you can have the code too!)</h3>
     <div class="row">
       <div class="col-md-6">
         <a href={{ url_for('projects.socket_chat') }} class="thumbnail">

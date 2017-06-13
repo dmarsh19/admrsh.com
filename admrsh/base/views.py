@@ -9,13 +9,6 @@ from . import base
 def home():
     return render_template('home.html', title='Home')
 
-@base.route('/code')
-def code():
-    return render_template('code.html', title='Code Samples')
-
-@base.route('/projects')
-def projects():
-    return render_template('projects.html', title='Projects')
 
 @base.route('/contact')
 def contact():
