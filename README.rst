@@ -1,6 +1,4 @@
 # follow deployment README in flask_uwsgi
-#write log to /var/log
-#settings.py (APP_LOGFILE)
 
 cloned socket_chat and cd to directory:
 pygmentize -f html -O full,linenos=inline -o socket_chat.html chat.pyw
