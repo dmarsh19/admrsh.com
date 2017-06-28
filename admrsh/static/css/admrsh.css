@@ -10,6 +10,12 @@ body {
   padding-right: 15px;
 }
 
+/* suggested by Bootstrap to remove negative margins on rows so they can be centered*/
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+
 .onepage {
   height: 1000px;
 }
