@@ -12,4 +12,4 @@ def socket_chat():
 
 @code.route('/atmo')
 def atmo():
-    render_template('atmo.html', title='atmo')
+    return render_template('atmo.html', title='atmo')
