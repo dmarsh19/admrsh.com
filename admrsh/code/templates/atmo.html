@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+{% block content %}
+  <div class="content container">
+    <h1 align="center">Socket Chat</h1>
+
+    <script type=text/javascript>
+      var fetchAtmo = function() {
+        $.ajax({
+          url: "{{ url_for('base.home') }}",
+          dataType: "html",
+          error: function( error ) {
+            console.log( error );
+          }
+        })
+          .done(function( data ) {
+            console.log ( 'done' );
+          });
+      };
+      setInterval(fetchAtmo, 5000);
+    </script>
+
+  </div>
+{% endblock %}

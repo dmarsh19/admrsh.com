@@ -52,16 +52,16 @@
       </script>
 
       <script type=text/javascript>
-      // Using jQuery's animate() method to add smooth page scroll
-      // optional number (500) specifies # of milliseconds for scroll action
-      // * match on # char (only anchors).
-      // \\ # is a special char in css selector, so escape it.
-      $('a[href*=\\#]').on('click', function(event){     
-        event.preventDefault();
-        $('html, body').animate({
-          scrollTop: $(this.hash).offset().top
-        }, 500);
-      });
+        // Using jQuery's animate() method to add smooth page scroll
+        // optional number (500) specifies # of milliseconds for scroll action
+        // * match on # char (only anchors).
+        // \\ # is a special char in css selector, so escape it.
+        $('a[href*=\\#]').on('click', function(event){     
+          event.preventDefault();
+          $('html, body').animate({
+            scrollTop: $(this.hash).offset().top
+          }, 500);
+        });
       </script>
 
       <div id="all">
