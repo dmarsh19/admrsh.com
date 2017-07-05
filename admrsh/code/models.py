@@ -19,7 +19,11 @@ class AtmoReading(db.Model):
 
     def as_dict(self):
         """return results as a dict with key equal to field name."""
-        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+        d = {}
+        for c in self.__table__.columns:
+            if c.name != 'oid':
+                d[c.name] = getattr(self, c.name)
+        return d
 
 
 class AtmoReadings(Resource):

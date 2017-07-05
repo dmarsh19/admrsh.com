@@ -17,4 +17,4 @@ def atmo():
     return render_template('atmo.html', title='atmo')
 
 
-api.add_resource(AtmoReadings, '/atmo_api')
+api.add_resource(AtmoReadings, '/api/atmo')
