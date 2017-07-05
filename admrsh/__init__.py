@@ -4,12 +4,15 @@ import os
 import logging
 
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 
 # create the application object
 app = Flask(__name__)
 # pulls in app configuration from settings.py
 app.config.from_object('settings')
+
+db = SQLAlchemy(app)
 
 #TODO: write to /var/log
 # will cause permission issues if its within a users home directory
