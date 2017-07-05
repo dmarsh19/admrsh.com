@@ -1,3 +1,6 @@
+from flask import jsonify
+from flask_restful import Resource
+
 from admrsh import db
 
 
@@ -14,5 +17,11 @@ class AtmoReading(db.Model):
         self.humd = humd
         self.datetime = datetime
 
-    def __repr__(self):
-        return '<AtmoReading {}>'.format(self.datetime.isoformat(' '))
+    def as_dict(self):
+        """return results as a dict with key equal to field name."""
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+
+class AtmoReadings(Resource):
+    def get(self):
+        return jsonify([a.as_dict() for a in AtmoReading.query.all()])

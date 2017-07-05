@@ -5,7 +5,7 @@ import logging
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-
+from flask_restful import Api
 
 # create the application object
 app = Flask(__name__)
@@ -13,6 +13,7 @@ app = Flask(__name__)
 app.config.from_object('settings')
 
 db = SQLAlchemy(app)
+api = Api(app)
 
 #TODO: write to /var/log
 # will cause permission issues if its within a users home directory
