@@ -57,11 +57,14 @@
          * - *: match on # char (only anchors).
          * - \\#: is a special char in css selector, so escape it. 
          */
-        $('a[href*=\\#]').on('click', function(event){     
-          event.preventDefault();
-          $('html, body').animate({
-            scrollTop: $(this.hash).offset().top
-          }, 500);
+        var $root = $('html, body');
+        $('a[href*=\\#]').on('click', function(event){
+          if ( $(this.hash).length ) {
+            event.preventDefault();
+            $root.animate({
+              scrollTop: $(this.hash).offset().top
+            }, 500);
+          };
         });
       </script>
 
