@@ -10,6 +10,8 @@ app = Flask(__name__)
 app.config.from_object('settings')
 
 db = SQLAlchemy(app)
+# flask_restful api resources
+api = Api()
 
 #TODO: write to /var/log
 # will cause permission issues if its within a users home directory
@@ -27,9 +29,6 @@ db = SQLAlchemy(app)
 from .base import base_bp
 from .code import code_bp
 from .api import api_bp
-
-# flask_restful api resources
-api = Api(api_bp)
 
 # register the individual blueprints (modules) to the app
 app.register_blueprint(base_bp)
