@@ -1,4 +1,4 @@
-sudo touch admrsh.com_project/settings.py
+#sudo touch admrsh.com_project/settings.py
 sudo chown -R www-data:www-data /var/www/admrsh.com_project
 # sticky bit to keep new files owned by www-data; 755
 sudo chmod -R u=rwX,g=srX,o=rX /var/www/admrsh.com_project

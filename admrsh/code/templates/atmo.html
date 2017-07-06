@@ -3,22 +3,17 @@
   <div class="content container">
     <h1 align="center">atmo</h1>
 
+    <div class="box">
+      <canvas id="linechart" height="450" width="800"></canvas>
+    </div>
+
     <script src="/static/js/Chart.min.js"></script>
 
     <script type=text/javascript>
-      var fetchAtmo = function() {
-        $.ajax({
-          url: "{{ url_for('api.atmo') }}",
-          dataType: "json",
-          error: function( error ) {
-            console.log( error );
-          }
-        })
-          .done(function( data ) {
-            console.log ( 'done' );
-          });
-      };
-      setInterval(fetchAtmo, 5000);
+      var requestAtmoApi = $.get( "{{ url_for('api.atmo') }}" ).done(function( data ) {
+        console.log( data );
+      });
+      setInterval(requestAtmoApi, 5000);
     </script>
 
   </div>
