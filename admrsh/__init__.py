@@ -1,6 +1,3 @@
-"""
-"""
-import os
 import logging
 
 from flask import Flask
@@ -13,7 +10,6 @@ app = Flask(__name__)
 app.config.from_object('settings')
 
 db = SQLAlchemy(app)
-api = Api(app)
 
 #TODO: write to /var/log
 # will cause permission issues if its within a users home directory
@@ -28,9 +24,14 @@ api = Api(app)
 
 
 # import modules (have to import at the end after all app configurations are instantiated)
-from .base import base
-from .code import code
+from .base import base_bp
+from .code import code_bp
+from .api import api_bp
+
+# flask_restful api resources
+api = Api(api_bp)
 
 # register the individual blueprints (modules) to the app
-app.register_blueprint(base)
-app.register_blueprint(code, url_prefix='/code')
+app.register_blueprint(base_bp)
+app.register_blueprint(code_bp, url_prefix='/code')
+app.register_blueprint(api_bp, url_prefix='/api')
