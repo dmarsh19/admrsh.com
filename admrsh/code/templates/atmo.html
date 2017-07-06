@@ -6,8 +6,8 @@
     <script type=text/javascript>
       var fetchAtmo = function() {
         $.ajax({
-          url: "{{ url_for('base.home') }}",
-          dataType: "html",
+          url: "{{ url_for('api.atmo') }}",
+          dataType: "json",
           error: function( error ) {
             console.log( error );
           }

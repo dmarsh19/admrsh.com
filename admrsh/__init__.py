@@ -11,6 +11,7 @@ app.config.from_object('settings')
 
 db = SQLAlchemy(app)
 # flask_restful api resources
+# add the api blueprint to the api object within api/__init__.py
 api = Api()
 
 #TODO: write to /var/log

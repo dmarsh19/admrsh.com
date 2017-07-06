@@ -9,4 +9,4 @@ class AtmoReadings(Resource):
         return [a.as_dict() for a in AtmoReading.query.all()]
 
 
-api.add_resource(AtmoReadings, 'atmo')
+api.add_resource(AtmoReadings, '/atmo', endpoint='atmo')
