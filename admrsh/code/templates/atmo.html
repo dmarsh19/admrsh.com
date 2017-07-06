@@ -3,17 +3,30 @@
   <div class="content container">
     <h1 align="center">atmo</h1>
 
-    <div class="box">
-      <canvas id="linechart" height="450" width="800"></canvas>
-    </div>
+    <canvas id="linechart" height="450" width="800"></canvas>
 
     <script src="/static/js/Chart.min.js"></script>
 
     <script type=text/javascript>
-      var requestAtmoApi = $.get( "{{ url_for('api.atmo') }}" ).done(function( data ) {
-        console.log( data );
-      });
-      setInterval(requestAtmoApi, 5000);
+      var requestAtmoApi = $.get( "{{ url_for('api.atmo') }}" ).done(function( atmoData ) {
+        //console.log( atmoData );
+        var ctx = document.getElementById('linechart');
+        var linechart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['a', 'b', 'c', 'd', 'e'],
+            datasets: [{
+              label: 'label',
+              data: [1, 2, 3, 4, 5]
+            }]
+          }, //end data
+          options: {
+            animation: {
+              duration: 1
+            }
+          } //end options
+        }) //end linechart
+      }); //end requestAtmoApi
     </script>
 
   </div>
