@@ -1,7 +1,7 @@
 from admrsh import db
 
 
-class AtmoReading(db.Model):
+class AtmoRead(db.Model):
     """."""
     __tablename__ = 'DHT'
     id = db.Column('oid', db.Integer, primary_key=True)
