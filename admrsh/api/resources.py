@@ -16,20 +16,23 @@ class AtmoReadingList(Resource):
         args = query_parser.parse_args()
         start = args.pop('startAt', None)
         end = args.pop('endAt', None)
-        if valid_date(start):
-            if valid_date(end):
-                # from start to end
-                pass
-            else:
-                # find one
-                pass
+        start_is_valid = valid_date(start)
+        end_is_valid = valid_date(end)
+        if start_is_valid and not end_is_valid:
+            return [a.as_dict() for a in AtmoRead.query.filter(AtmoRead.datetime >= start).all()]
+        if not start_is_valid and end_is_valid:
+            return [a.as_dict() for a in AtmoRead.query.filter(AtmoRead.datetime <= end).all()]
+        if start_is_valid and end_is_valid:
+            if start < end:
+                return [a.as_dict() for a in AtmoRead.query.filter(AtmoRead.datetime.between(start, end)).all()]
         return [a.as_dict() for a in AtmoRead.query.all()]
+        #return [a.as_dict() for a in AtmoRead.query.order_by(AtmoRead.datetime).all()]
 
 
 class AtmoReading(Resource):
     def get(self, datetime):
         if valid_date(datetime):
-            return AtmoRead.query.filter_by(datetime=datetime).first()
+            return AtmoRead.query.filter_by(datetime=datetime).first().as_dict()
 
 
 def valid_date(date_str):
