@@ -1,6 +1,6 @@
 import time
 
-from flask_restful import Resource, reqparse
+from flask_restful import Resource, reqparse, abort
 
 from admrsh import api
 from .models import AtmoRead
@@ -23,7 +23,9 @@ class AtmoReadingList(Resource):
         if not start_is_valid and end_is_valid:
             return [a.as_dict() for a in AtmoRead.query.filter(AtmoRead.datetime <= end).all()]
         if start_is_valid and end_is_valid:
-            if start < end:
+            if start > end:
+                abort(404, message="startAt must be less than endAt")
+            else:
                 return [a.as_dict() for a in AtmoRead.query.filter(AtmoRead.datetime.between(start, end)).all()]
         return [a.as_dict() for a in AtmoRead.query.all()]
         #return [a.as_dict() for a in AtmoRead.query.order_by(AtmoRead.datetime).all()]
@@ -32,7 +34,7 @@ class AtmoReadingList(Resource):
 class AtmoReading(Resource):
     def get(self, datetime):
         if valid_date(datetime):
-            return AtmoRead.query.filter_by(datetime=datetime).first().as_dict()
+            return AtmoRead.query.filter_by(datetime=datetime).first_or_404().as_dict()
 
 
 def valid_date(date_str):
