@@ -36,9 +36,28 @@ var chartData = {
             tension: 0 // disables bezier curves
         }
     }
-};
+  },
+  ctx = document.getElementById('linechart').getContext("2d"),
+  lineChart = new Chart(ctx, {
+    type: 'line',
+    data: chartData,
+    options: chartOptions
+  })
+  startDate = $( "#startDate" ).datepicker().on( "change", function() {
+    endDate.datepicker( "option", "minDate", getDate( this ) );
+  }),
+  endDate = $( "#endDate" ).datepicker().on( "change", function() {
+    startDate.datepicker( "option", "maxDate", getDate( this ) );
+  });
 
-function asyncDrawChart(apiUrl, lineChart) {
+$.datepicker.setDefaults({
+    minDate: new Date(2016, 8, 1),
+    maxDate: new Date(2017, 4, 31),
+    duration: "fast",
+    showAnim: ""
+});
+
+function asyncDrawChart(apiUrl) {
     $.get( apiUrl ).done(function( atmoData ) {
         //console.log( atmoData.map(i => i['datetime']) );
         lineChart.data.labels = atmoData.map(function(i){ return i['datetime'] });
@@ -47,13 +66,6 @@ function asyncDrawChart(apiUrl, lineChart) {
         lineChart.update(0);
     });
 };
-
-$.datepicker.setDefaults({
-    minDate: new Date(2016, 8, 1),
-    maxDate: new Date(2017, 4, 31),
-    duration: "fast",
-    showAnim: ""
-});
 
 function getDate( element ) {
     var dateFormat = "mm/dd/yy",
@@ -67,9 +79,14 @@ function getDate( element ) {
     return date;
 };
 
-from = $( "#startDate" ).datepicker().on( "change", function() {
-    to.datepicker( "option", "minDate", getDate( this ) );
+$(document).ready(function() {
+    asyncDrawChart("{{ url_for('api.atmo') }}");
 });
-to = $( "#endDate" ).datepicker().on( "change", function() {
-    from.datepicker( "option", "maxDate", getDate( this ) );
+
+$("#datepicker-submit").on( "click", function() {
+    var sd = startDate.datepicker( "getDate" );
+    var ed = endDate.datepicker( "getDate" );
+    console.log( sd );
+    console.log( ed );
+    //asyncDrawChart
 });
