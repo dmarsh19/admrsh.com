@@ -1,4 +1,3 @@
-var dateFormat = "mm/dd/yyyy";
 var chartData = {
     labels: [],
     datasets: [{
@@ -23,9 +22,8 @@ var chartData = {
     pointHoverBorderColor: "rgba(0, 0, 255, 1)",
     pointHoverBackgroundColor: "rgba(0, 0, 255, 1)"
     }]
-};
-
-var chartOptions = {
+  },
+  chartOptions = {
     animation: {
         duration: 0 // general animation time
     },
@@ -58,7 +56,8 @@ $.datepicker.setDefaults({
 });
 
 function getDate( element ) {
-    var date;
+    var dateFormat = "mm/dd/yy",
+      date;
     try {
         date = $.datepicker.parseDate( dateFormat, element.value );
     }
