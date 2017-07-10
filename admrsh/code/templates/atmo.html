@@ -9,34 +9,33 @@
     <script src="/static/js/jquery-ui.min.js"></script>
 
     <script type=text/javascript>
-      $(document).ready(function() {
-        var ctx = document.getElementById('linechart').getContext("2d");
-        var chartData = {
-          labels: null,
-          datasets: [{
-            label: 'temperature',
-            data: null,
-            fill: false,
-            // line color; red, opacity: 40%
-            borderColor: "rgba(255, 0, 0, 0.4)",
-            pointBorderColor: "rgba(255, 0, 0, 0.6)",
-            pointBackgroundColor: "rgba(255, 0, 0, 0.6)",
-            pointHoverBorderColor: "rgba(255, 0, 0, 1)",
-            pointHoverBackgroundColor: "rgba(255, 0, 0, 1)"
-          },
-          {
-            label: 'humidity',
-            data: null,
-            fill: false,
-            // line color; blue, opacity: 40%
-            borderColor: "rgba(0, 0, 255, 0.4)",
-            pointBorderColor: "rgba(0, 0, 255, 0.6)",
-            pointBackgroundColor: "rgba(0, 0, 255, 0.6)",
-            pointHoverBorderColor: "rgba(0, 0, 255, 1)",
-            pointHoverBackgroundColor: "rgba(0, 0, 255, 1)"
-          }]
-        };
-        var chartOptions = {
+      var ctx = document.getElementById('linechart').getContext("2d");
+      var lineChart = new Chart(ctx, {
+        type: 'line',
+        labels: null,
+        datasets: [{
+          label: 'temperature',
+          data: null,
+          fill: false,
+          // line color; red, opacity: 40%
+          borderColor: "rgba(255, 0, 0, 0.4)",
+          pointBorderColor: "rgba(255, 0, 0, 0.6)",
+          pointBackgroundColor: "rgba(255, 0, 0, 0.6)",
+          pointHoverBorderColor: "rgba(255, 0, 0, 1)",
+          pointHoverBackgroundColor: "rgba(255, 0, 0, 1)"
+        },
+        {
+          label: 'humidity',
+          data: null,
+          fill: false,
+          // line color; blue, opacity: 40%
+          borderColor: "rgba(0, 0, 255, 0.4)",
+          pointBorderColor: "rgba(0, 0, 255, 0.6)",
+          pointBackgroundColor: "rgba(0, 0, 255, 0.6)",
+          pointHoverBorderColor: "rgba(0, 0, 255, 1)",
+          pointHoverBackgroundColor: "rgba(0, 0, 255, 1)"
+        }],
+        options: {
           animation: {
             duration: 0 // general animation time
           },
@@ -49,10 +48,13 @@
               tension: 0 // disables bezier curves
             }
           }
-        };
-        var lineChart = new Chart(ctx).Line(chartData, chartOptions);
-        var apiUrl = "{{ url_for('api.atmo') }}";
-        asyncDrawChart(apiUrl, lineChart);
+        }
+      });
+    </script>
+
+    <script type=text/javascript>
+      $(document).ready(function() {
+        asyncDrawChart("{{ url_for('api.atmo') }}", lineChart);
       });
     </script>
 
