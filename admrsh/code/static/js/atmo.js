@@ -1,3 +1,4 @@
+var dateFormat = "mm/dd/yyyy";
 var chartData = {
     labels: [],
     datasets: [{
@@ -45,6 +46,31 @@ function asyncDrawChart(apiUrl, lineChart) {
         lineChart.data.labels = atmoData.map(function(i){ return i['datetime'] });
         lineChart.data.datasets[0].data = atmoData.map(function(i){ return i['temp'] });
         lineChart.data.datasets[1].data = atmoData.map(function(i){ return i['humd'] });
-        lineChart.update();
+        lineChart.update(0);
     });
 };
+
+$.datepicker.setDefaults({
+    minDate: new Date(2016, 8, 1),
+    maxDate: new Date(2017, 4, 31),
+    duration: "fast",
+    showAnim: ""
+});
+
+function getDate( element ) {
+    var date;
+    try {
+        date = $.datepicker.parseDate( dateFormat, element.value );
+    }
+    catch( error ) {
+        date = null;
+    }
+    return date;
+};
+
+from = $( "#startDate" ).datepicker().on( "change", function() {
+    to.datepicker( "option", "minDate", getDate( this ) );
+});
+to = $( "#endDate" ).datepicker().on( "change", function() {
+    from.datepicker( "option", "maxDate", getDate( this ) );
+});

@@ -1,8 +1,21 @@
 {% extends "template.html" %}
 {% block content %}
+  <link href="/static/css/jquery-ui.css" rel="stylesheet">
   <div class="content container onepage">
     <h1 align="center">atmo</h1>
 
+<!--
+      <div class="input-group">
+-->
+    <!-- row -->
+    <input type="text" class="form-control" id="startDate" placeholder="Start Date...">
+    <input type="text" class="form-control" id="endDate" placeholder="End Date...">
+<!--
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div>
+-->
     <canvas id="linechart" height="450" width="800"></canvas>
 
     <script src="/static/js/Chart.min.js"></script>
