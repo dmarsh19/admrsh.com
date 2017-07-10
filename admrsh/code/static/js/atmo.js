@@ -78,15 +78,3 @@ function getDate( element ) {
     }
     return date;
 };
-
-$(document).ready(function() {
-    asyncDrawChart("{{ url_for('api.atmo') }}");
-});
-
-$("#datepicker-submit").on( "click", function() {
-    var sd = startDate.datepicker( "getDate" );
-    var ed = endDate.datepicker( "getDate" );
-    console.log( sd );
-    console.log( ed );
-    //asyncDrawChart
-});
