@@ -1,59 +1,74 @@
 {% extends "template.html" %}
 {% block content %}
-  <div class="content container">
+  <div class="content container onepage">
     <h1 align="center">atmo</h1>
 
     <canvas id="linechart" height="450" width="800"></canvas>
 
     <script src="/static/js/Chart.min.js"></script>
+    <script src="/static/js/jquery-ui.min.js"></script>
 
     <script type=text/javascript>
-      var requestAtmoApi = $.get( "{{ url_for('api.atmo') }}" ).done(function( atmoData ) {
-        //console.log( atmoData.map(i => i['datetime']) );
-        var ctx = document.getElementById('linechart');
-        var linechart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: atmoData.map(function(i){ return i['datetime'] }),
-            datasets: [{
-              label: 'temperature',
-              data: atmoData.map(function(i){ return i['temp'] }),
-              fill: false,
-              // line color; red, opacity: 40%
-              borderColor: "rgba(255, 0, 0, 0.4)",
-              pointBorderColor: "rgba(255, 0, 0, 0.6)",
-              pointBackgroundColor: "rgba(255, 0, 0, 0.6)",
-              pointHoverBorderColor: "rgba(255, 0, 0, 1)",
-              pointHoverBackgroundColor: "rgba(255, 0, 0, 1)"
-            },
-            {
-              label: 'humidity',
-              data: atmoData.map(function(i){ return i['humd'] }),
-              fill: false,
-              // line color; blue, opacity: 40%
-              borderColor: "rgba(0, 0, 255, 0.4)",
-              pointBorderColor: "rgba(0, 0, 255, 0.6)",
-              pointBackgroundColor: "rgba(0, 0, 255, 0.6)",
-              pointHoverBorderColor: "rgba(0, 0, 255, 1)",
-              pointHoverBackgroundColor: "rgba(0, 0, 255, 1)"
-            }]
-          }, //end data
-          options: {
-            animation: {
-              duration: 0 // general animation time
-            },
-            hover: {
-              animationDuration: 0 // duration of animations when hovering an item
-            },
-            responsiveAnimationDuration: 0, // animation duration after a resize
-            elements: {
-              line: {
-                tension: 0 // disables bezier curves
-              }
+      $(document).ready(function() {
+        var ctx = document.getElementById('linechart').getContext("2d");
+        var chartData = {
+          labels: null,
+          datasets: [{
+            label: 'temperature',
+            data: null,
+            fill: false,
+            // line color; red, opacity: 40%
+            borderColor: "rgba(255, 0, 0, 0.4)",
+            pointBorderColor: "rgba(255, 0, 0, 0.6)",
+            pointBackgroundColor: "rgba(255, 0, 0, 0.6)",
+            pointHoverBorderColor: "rgba(255, 0, 0, 1)",
+            pointHoverBackgroundColor: "rgba(255, 0, 0, 1)"
+          },
+          {
+            label: 'humidity',
+            data: null,
+            fill: false,
+            // line color; blue, opacity: 40%
+            borderColor: "rgba(0, 0, 255, 0.4)",
+            pointBorderColor: "rgba(0, 0, 255, 0.6)",
+            pointBackgroundColor: "rgba(0, 0, 255, 0.6)",
+            pointHoverBorderColor: "rgba(0, 0, 255, 1)",
+            pointHoverBackgroundColor: "rgba(0, 0, 255, 1)"
+          }]
+        };
+        var chartOptions = {
+          animation: {
+            duration: 0 // general animation time
+          },
+          hover: {
+            animationDuration: 0 // duration of animations when hovering an item
+          },
+          responsiveAnimationDuration: 0, // animation duration after a resize
+          elements: {
+            line: {
+              tension: 0 // disables bezier curves
             }
-          } //end options
-        }) //end linechart
-      }); //end requestAtmoApi
+          }
+        };
+        var lineChart = new Chart(ctx).Line(chartData, chartOptions);
+        var apiUrl = "{{ url_for('api.atmo') }}";
+        asyncDrawChart(apiUrl, lineChart);
+      });
+    </script>
+
+    <script type=text/javascript>
+      function asyncDrawChart(apiUrl, lineChart) {
+        $.get( apiUrl ).done(function( atmoData ) {
+          //console.log( atmoData.map(i => i['datetime']) );
+          lineChart.data.labels.pop();
+          lineChart.data.datasets.forEach(function(dataset) { dataset.data.pop() });
+
+          lineChart.data.labels.push(atmoData.map(function(i){ return i['datetime'] }));
+          lineChart.data.datasets[0].data.push(atmoData.map(function(i){ return i['temp'] }));
+          lineChart.data.datasets[1].data.push(atmoData.map(function(i){ return i['humd'] }));
+          lineChart.update()
+        });
+      }; //end requestAtmoApi
     </script>
 
   </div>
