@@ -1,3 +1,14 @@
+Chart.defaults.animation.duration = 0 // general animation time
+Chart.defaults.hover.animationDuration = 0 // duration of animations when hovering an item
+Chart.defaults.responsiveAnimationDuration = 0 // animation duration after a resize
+
+$.datepicker.setDefaults({
+    minDate: new Date(2016, 8, 1),
+    maxDate: new Date(2017, 4, 31),
+    duration: "fast",
+    showAnim: ""
+});
+
 var chartData = {
     labels: [],
     datasets: [{
@@ -23,26 +34,18 @@ var chartData = {
     pointHoverBackgroundColor: "rgba(0, 0, 255, 1)"
     }]
   },
-  chartOptions = {
-    animation: {
-        duration: 0 // general animation time
-    },
-    hover: {
-        animationDuration: 0 // duration of animations when hovering an item
-    },
-    responsiveAnimationDuration: 0, // animation duration after a resize
-    elements: {
-        line: {
-            tension: 0 // disables bezier curves
-        }
-    }
-  },
   ctx = document.getElementById('lineChart').getContext("2d"),
   lineChart = new Chart(ctx, {
     type: 'line',
     data: chartData,
-    options: chartOptions
-  })
+    options: {
+        elements: {
+            line: {
+                tension: 0 // disables bezier curves
+            }
+        }
+    }
+  }),
   startAt = $( "#startAt" ).datepicker().on( "change", function() {
     endAt.datepicker( "option", "minDate", getDate( this ) );
   }),
@@ -50,12 +53,7 @@ var chartData = {
     startAt.datepicker( "option", "maxDate", getDate( this ) );
   });
 
-$.datepicker.setDefaults({
-    minDate: new Date(2016, 8, 1),
-    maxDate: new Date(2017, 4, 31),
-    duration: "fast",
-    showAnim: ""
-});
+
 
 function asyncDrawChart(apiUrl) {
     $.get( apiUrl ).done(function( atmoData ) {

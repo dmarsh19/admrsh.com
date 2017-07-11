@@ -16,13 +16,11 @@ class AtmoReadingList(Resource):
         args = query_parser.parse_args()
         start = args.pop('startAt', None)
         end = args.pop('endAt', None)
-        start_is_valid = valid_date(start)
-        end_is_valid = valid_date(end)
-        if start_is_valid and not end_is_valid:
+        if start and not end:
             return [a.as_dict() for a in AtmoRead.query.filter(AtmoRead.datetime >= start).all()]
-        if not start_is_valid and end_is_valid:
+        if not start and end:
             return [a.as_dict() for a in AtmoRead.query.filter(AtmoRead.datetime <= end).all()]
-        if start_is_valid and end_is_valid:
+        if start and end:
             if start > end:
                 abort(404, message="startAt must be less than endAt")
             else:
@@ -33,18 +31,7 @@ class AtmoReadingList(Resource):
 
 class AtmoReading(Resource):
     def get(self, datetime):
-        if valid_date(datetime):
-            return AtmoRead.query.filter_by(datetime=datetime).first_or_404().as_dict()
-
-
-def valid_date(date_str):
-    # 404 abort instead of display all?
-    try:
-        time.strptime(date_str, '%Y-%m-%d %H:%M')
-        return True
-    except (ValueError, TypeError):
-        return False
-# END valid_date()
+        return AtmoRead.query.filter(AtmoRead.datetime.startswith(datetime)).first_or_404().as_dict()
 
 
 api.add_resource(AtmoReadingList, '/atmo', endpoint='atmo')
