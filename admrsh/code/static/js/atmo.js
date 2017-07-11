@@ -1,6 +1,7 @@
-Chart.defaults.animation.duration = 0 // general animation time
-Chart.defaults.hover.animationDuration = 0 // duration of animations when hovering an item
-Chart.defaults.responsiveAnimationDuration = 0 // animation duration after a resize
+Chart.defaults.global.animation.duration = 0 // general animation time
+Chart.defaults.global.hover.animationDuration = 0 // duration of animations when hovering an item
+Chart.defaults.global.responsiveAnimationDuration = 0 // animation duration after a resize
+Chart.defaults.global.elements.line.tension = 0 // disables bezier curves
 
 $.datepicker.setDefaults({
     minDate: new Date(2016, 8, 1),
@@ -39,6 +40,22 @@ var chartData = {
     type: 'line',
     data: chartData,
     options: {
+/*
+        scales: {
+            xAxes: [{
+                id: 'xAxis',
+                type: 'category',
+                ticks: {
+                    callback: function(label) {
+                        var date = new Date(label),
+                          locale = "en-us",
+                          month = date.toLocaleString(locale, { month: "long" });
+                        return month;
+                    }
+                }
+            }]
+        },
+*/
         elements: {
             line: {
                 tension: 0 // disables bezier curves
@@ -58,7 +75,7 @@ var chartData = {
 function asyncDrawChart(apiUrl) {
     $.get( apiUrl ).done(function( atmoData ) {
         //console.log( atmoData.map(i => i['datetime']) );
-        lineChart.data.labels = atmoData.map(function(i){ return i['datetime'] });
+        lineChart.data.labels = atmoData.map(function(i){ return i['datetime'].split("T")[0] });
         lineChart.data.datasets[0].data = atmoData.map(function(i){ return i['temp'] });
         lineChart.data.datasets[1].data = atmoData.map(function(i){ return i['humd'] });
         lineChart.update(0);
