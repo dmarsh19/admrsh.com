@@ -37,17 +37,17 @@ var chartData = {
         }
     }
   },
-  ctx = document.getElementById('linechart').getContext("2d"),
+  ctx = document.getElementById('lineChart').getContext("2d"),
   lineChart = new Chart(ctx, {
     type: 'line',
     data: chartData,
     options: chartOptions
   })
-  startDate = $( "#startDate" ).datepicker().on( "change", function() {
-    endDate.datepicker( "option", "minDate", getDate( this ) );
+  startAt = $( "#startAt" ).datepicker().on( "change", function() {
+    endAt.datepicker( "option", "minDate", getDate( this ) );
   }),
-  endDate = $( "#endDate" ).datepicker().on( "change", function() {
-    startDate.datepicker( "option", "maxDate", getDate( this ) );
+  endAt = $( "#endAt" ).datepicker().on( "change", function() {
+    startAt.datepicker( "option", "maxDate", getDate( this ) );
   });
 
 $.datepicker.setDefaults({
