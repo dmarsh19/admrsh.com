@@ -16,10 +16,10 @@ sudo git clone https://github.com/dmarsh19/admrsh.com.git admrsh.com_project
 #in browser, navigate to url
 
 
-
-
+# pygments syntax highlighter
 cloned socket_chat and cd to directory:
-pygmentize -f html -O full,linenos=inline -o socket_chat.html chat.pyw
+sudo apt install python-pygments
+pygmentize -f html -O full,linenos=table -o socket_chat.html chat.pyw
 sudo cp socket_chat.html /var/www/admrsh.com_project
 
 sudo apt install npm
@@ -29,3 +29,28 @@ node_modules/chart.js/dist/
   Chart.bundle.min.js
   Chart.js
   Chart.min.js
+
+
+# template for pygmentize to break code into several tables
+    <table class="highlighttable"><tr>
+      <td class="linenos"><div class="linenodiv"><pre>
+        <!-- linenos -->
+      </pre></div></td>
+      <td class="code"><div class="highlight"><pre>
+        <!-- code spans --->
+      </pre></div></td>
+    </tr></table>
+
+
+# database conversion
+select datetime, replace(datetime, ' ', 'T') from dht limit 15;
+update DHT set datetime=replace(datetime, ' ', 'T');
+select datetime from dht limit 15;
+select datetime || ':00.000' from dht limit 15;
+update DHT set datetime=datetime || ':00.000';
+select datetime from dht limit 15;
+DROP TABLE dhttemp;
+.tables
+.schema DHT
+REINDEX dht_datetime;
+VACCUUM;

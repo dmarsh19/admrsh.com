@@ -5,10 +5,19 @@
     <h1 align="center">atmo</h1>
 
     <p>
-      <a href="{{ url_for('api.atmo') }}">atmo api all</a>
-      <a href="{{ url_for('api.atmo', startAt='2017-12-20', endAt='2017-12-25') }}">atmo api limited</a>
-      <a href="{{ url_for('api.atmo') }}/2017-12-20T18:00">api atmo one></a>
+      Issues:
+      Doesn't show times in labels and tooltips for simplicity sake
     </p>
+
+    <div class="dropdown" align="center">
+      <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">atmo API <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a href="{{ url_for('api.atmo') }}">all</a></li>
+        <li><a href="{{ url_for('api.atmo', startAt='2016-12-20', endAt='2016-12-25') }}">range</a></li>
+        <li><a href="{{ url_for('api.atmo') }}/2016-12-20T18:00">single</a></li>
+      </ul>
+    </div>
 
     <div class="row">
       <div class="col-md-3 col-md-offset-3">
