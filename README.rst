@@ -32,13 +32,10 @@ node_modules/chart.js/dist/
 
 
 # template for pygmentize to break code into several tables
+# **no extra space or breaks between pre**
     <table class="highlighttable"><tr>
-      <td class="linenos"><div class="linenodiv"><pre>
-        <!-- linenos -->
-      </pre></div></td>
-      <td class="code"><div class="highlight"><pre>
-        <!-- code spans --->
-      </pre></div></td>
+      <td class="linenos"><div class="linenodiv"><pre><!-- linenos --></pre></div></td>
+      <td class="code"><div class="highlight"><pre><!-- code spans ---></pre></div></td>
     </tr></table>
 
 
