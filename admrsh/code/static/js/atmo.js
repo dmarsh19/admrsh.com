@@ -43,8 +43,6 @@ var chartData = {
     startAt.datepicker( "option", "maxDate", getDate( this ) );
   });
 
-
-
 function asyncDrawChart(apiUrl) {
     $.get( apiUrl ).done(function( atmoData ) {
         lineChart.data.labels = atmoData.map(function(i){ return i['datetime'].split("T")[0] });
