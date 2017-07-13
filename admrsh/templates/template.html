@@ -60,8 +60,8 @@
       });
     </script>
 
-    <div class="container-fluid">
-      <div class="row row-no-gutters" id="notify">
+    <div class="container">
+      <div class="row" id="notify">
         {% for message in get_flashed_messages() %}
           <div class="flash">{{ message }}</div>
         {% endfor %}
@@ -69,13 +69,13 @@
           <p class="error"><strong>Error:</strong> {{ error }}
         {% endif %}
       </div>
-      <div class="row row-no-gutters" id="main">
+      <div class="row" id="main">
         <!-- inheritance -->
         {% block content %}
         {% endblock %}
         <!-- end inheritance -->
       </div>
-    </div> <!-- /.container-fluid -->
+    </div> <!-- /.container -->
     <div class="container-fluid" id="footer">
       <div class="col-xs-2 col-xs-offset-8">
         <a href="https://www.github.com/dmarsh19">

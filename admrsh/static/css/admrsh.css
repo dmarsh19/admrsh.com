@@ -2,12 +2,6 @@ body {
   background-color: #ffffff;
 }
 
-/* suggested by Bootstrap to remove negative margins on rows so they can be centered*/
-.row-no-gutters {
-  margin-right: 0;
-  margin-left: 0;
-}
-
 .one-page {
   height: 1000px;
   padding-top: 30px;
@@ -16,10 +10,6 @@ body {
 #footer {
   background-color: #32302F;
   color: white;
-  padding-top: 15px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 15px;
 }
 
 .navbar-default {
