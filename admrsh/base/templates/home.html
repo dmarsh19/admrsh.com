@@ -3,40 +3,37 @@
 <div class="one-page" id="summary">
   <div class="jumbotron">
     <h1 align="center">Welcome to admrsh.com</h1>
+  </div>
     <!-- <p>Welcome! I'm glad something picqued Please take a look around. You can find some additional information about what's important to me both professionally and personally. There are a few code samples that highlight...
     Hopefully you made it to this site on purpose. If so, thanks for...</p> -->
-  </div>
-</div>
-<div class="one-page" id="code" style="border-style: solid; border-color: #8f8f8f #ffffff #8f8f8f #ffffff;">
+</div> <!-- summary -->
+<div class="container one-page" id="code" style="border-style: solid; border-color: #8f8f8f #ffffff #8f8f8f #ffffff;">
   <div class="page-header">
     <h1 align="center">Code Samples</h1>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-md-6">
       <a href={{ url_for('code.socket_chat') }} class="thumbnail">
         <img src="..." alt="Socket Chat">
       </a>
     </div>
-    <div class="col-xs-12">
+    <div class="col-md-6">
       <a href={{ url_for('code.atmo') }} class="thumbnail">
         <img src="..." alt="atmo">
       </a>
     </div>
-  </div> <!-- /.row -->
-</div> <!-- /code -->
+  </div>
+</div> <!-- code -->
 <div class="one-page" id="contact">
   <div class="page-header">
     <h1 align="center">Contact</h1>
   </div>
   <form>
     <div class="form-group">
-      <label for="email_text">Email message</label>
-      <textarea class="form-control" id="email_text" placeholder="Text input" rows="3"></textarea>
+      <label for="emailMessage">Email message</label>
+      <textarea class="form-control" id="emailMessage" placeholder="Message" rows="3"></textarea>
     </div>
-    <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Send</button>
-    </div>
+    <button type="submit" class="btn btn-default">Send</button>
   </form>
-</div> <!-- /contact -->
+</div> <!-- contact -->
 {% endblock %}
