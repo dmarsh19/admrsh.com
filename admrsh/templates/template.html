@@ -60,32 +60,36 @@
       });
     </script>
 
-    <div class="container">
-      <div class="row" id="notify">
-        {% for message in get_flashed_messages() %}
-          <div class="flash">{{ message }}</div>
-        {% endfor %}
-        {% if error %}
-          <p class="error"><strong>Error:</strong> {{ error }}
-        {% endif %}
+    <div class="container-fluid" id="main">
+      {% for message in get_flashed_messages() %}
+      <div class="row">
+        <div class="col-xs-12 flash">{{ message }}</div>
       </div>
-      <div class="row" id="main">
-        <!-- inheritance -->
-        {% block content %}
-        {% endblock %}
-        <!-- end inheritance -->
+      {% endfor %}
+      {% if error %}
+      <div class="row">
+        <div class="col-xs-12">
+          <p class="error"><strong>Error:</strong> {{ error }}</p>
+        </div>
       </div>
-    </div> <!-- /.container -->
+      {% endif %}
+      <!-- inheritance -->
+      {% block content %}
+      {% endblock %}
+      <!-- end inheritance -->
+    </div> <!-- /main -->
     <div class="container-fluid" id="footer">
-      <div class="col-xs-2 col-xs-offset-8">
-        <a href="https://www.github.com/dmarsh19">
-          <i class="fa fa-github fa-3x"></i>
-        </a>
-      </div>
-      <div class="col-xs-2">
-        <a href="https://www.linkedin.com/in/derek-marsh-b03450a7">
-          <i class="fa fa-linkedin-square fa-3x"></i>
-        </a>
+      <div class="row">
+        <div class="col-xs-2 col-xs-offset-8">
+          <a href="https://www.github.com/dmarsh19">
+            <i class="fa fa-github fa-3x"></i>
+          </a>
+        </div>
+        <div class="col-xs-2">
+          <a href="https://www.linkedin.com/in/derek-marsh-b03450a7">
+            <i class="fa fa-linkedin-square fa-3x"></i>
+          </a>
+        </div>
       </div>
     </div> <!-- /footer -->
 
