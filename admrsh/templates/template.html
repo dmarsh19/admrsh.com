@@ -12,9 +12,33 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/font-awesome.min.css" rel="stylesheet">
     <link href="/static/css/admrsh.css" rel="stylesheet">
+    <!-- Globally required - some apps may require more in their own static -->
+    <!-- js in head, can't move to end of body to increase page load performance because of template inheritance -->
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script type=text/javascript>
+      // always collapse the navbar even when navigating based on anchors
+      $('#navbar').on('click', function() {
+        $('.navbar-collapse').collapse('hide');
+      });
+      /*
+       * Using jQuery's animate() method to add smooth page scroll
+       * - optional number (500) specifies # of milliseconds for scroll action
+       * - *: match on # char (only anchors).
+       * - \\#: is a special char in css selector, so escape it. 
+       */
+      var $root = $('html, body');
+      $('a[href*=\\#]').on('click', function(event){
+        if ( $(this.hash).length ) {
+          event.preventDefault();
+          $root.animate({ scrollTop: $(this.hash).offset().top }, 500);
+        };
+      });
+    </script>
   </head>
   <body>
     <div class="container-fluid">
+
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -34,68 +58,35 @@
               <li><a href={{ url_for('base.home', _anchor="contact") }}>contact</a></li>
             </ul>
           </div> <!-- /.navbar-collapse -->
-        </div> <!-- /.container-fluid -->
+        </div>
       </nav>
 
-      <!-- Globally required - some apps may require more in their own static -->
-      <!-- can't move to end of body to increase page load performance because of template inheritance -->
-      <script src="/static/js/jquery-3.2.1.min.js"></script>
-      <script src="/static/js/bootstrap.min.js"></script>
-
-      <!-- always collapse the navbar even when navigating based on anchors -->
-      <script type=text/javascript>
-        $('#navbar').on('click', function() {
-          $('.navbar-collapse').collapse('hide');
-        });
-
-        /*
-         * Using jQuery's animate() method to add smooth page scroll
-         * - optional number (500) specifies # of milliseconds for scroll action
-         * - *: match on # char (only anchors).
-         * - \\#: is a special char in css selector, so escape it. 
-         */
-        var $root = $('html, body');
-        $('a[href*=\\#]').on('click', function(event){
-          if ( $(this.hash).length ) {
-            event.preventDefault();
-            $root.animate({
-              scrollTop: $(this.hash).offset().top
-            }, 500);
-          };
-        });
-      </script>
-
-      <div id="all">
-        <div id="notify">
-          {% for message in get_flashed_messages() %}
-            <div class="flash">{{ message }}</div>
-          {% endfor %}
-          {% if error %}
-            <p class="error"><strong>Error:</strong> {{ error }}
-          {% endif %}
+      <div class="row" id="notify">
+        {% for message in get_flashed_messages() %}
+          <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% if error %}
+          <p class="error"><strong>Error:</strong> {{ error }}
+        {% endif %}
+      </div>
+      <div class="row" id="main">
+        <!-- inheritance -->
+        {% block content %}
+        {% endblock %}
+        <!-- end inheritance -->
+      </div> <!-- /main -->
+      <div class="row" id="footer">
+        <div class="col-xs-2 col-xs-offset-8">
+          <a href="https://www.github.com/dmarsh19">
+            <i class="fa fa-github fa-3x"></i>
+          </a>
         </div>
-        <div id="main">
-          <!-- inheritance -->
-          {% block content %}
-          {% endblock %}
-          <!-- end inheritance -->
-        </div> <!-- /main -->
-        <div id="footer">
-          <div class="row">
-            <div class=".col-md-4 .col-md-offset-3">
-
-            </div>
-            <div class=".col-md-4 .col-md-offset-4">
-              <a href="https://www.github.com/dmarsh19">
-                <i class="fa fa-github fa-3x"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/derek-marsh-b03450a7">
-                <i class="fa fa-linkedin-square fa-3x"></i>
-              </a>
-            </div>
-          </div> <!-- /.row -->
-        </div> <!-- /footer -->
-      </div> <!-- /all -->
+        <div class="col-xs-2">
+          <a href="https://www.linkedin.com/in/derek-marsh-b03450a7">
+            <i class="fa fa-linkedin-square fa-3x"></i>
+          </a>
+        </div>
+      </div> <!-- /footer -->
 
     </div> <!-- /.container-fluid -->
   </body>
