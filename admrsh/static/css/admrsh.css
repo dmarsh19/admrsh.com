@@ -1,23 +1,16 @@
 body {
-  /*padding-top: 70px;*/
   background-color: #ffffff;
 }
 
-/* apply to everything within content, but not on content itself*/
-.content {
-  padding-top: 70px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
 /* suggested by Bootstrap to remove negative margins on rows so they can be centered*/
-.no-gutters {
+.row-no-gutters {
   margin-right: 0;
   margin-left: 0;
 }
 
-.onepage {
+.one-page {
   height: 1000px;
+  padding-top: 30px;
 }
 
 #footer {
@@ -31,11 +24,6 @@ body {
 
 .navbar-default {
   background-color: #ffffff;
-}
-
-.container-fluid {
-  padding-right: 0px;
-  padding-left: 0px;
 }
 
 /*uncollapsed navbar*/

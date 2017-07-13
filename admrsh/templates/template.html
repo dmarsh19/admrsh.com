@@ -12,8 +12,32 @@
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/font-awesome.min.css" rel="stylesheet">
     <link href="/static/css/admrsh.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+            <span class="sr-only">menu</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+        </div> <!-- /.navbar-header -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="nav navbar-nav">
+            <li><a href={{ url_for('base.home') }}>home</a></li>
+            <li><a href="/static/derek_marsh_resume.pdf">resume</a></li>
+            <li><a href={{ url_for('base.home', _anchor="code") }}>code samples</a></li>
+            <li><a href={{ url_for('base.home', _anchor="contact") }}>contact</a></li>
+          </ul>
+        </div> <!-- /.navbar-collapse -->
+      </div>
+    </nav>
+
     <!-- Globally required - some apps may require more in their own static -->
-    <!-- js in head, can't move to end of body to increase page load performance because of template inheritance -->
+    <!-- js after navbar, before template inheritance, can't move to end of body to increase page load performance -->
     <script src="/static/js/jquery-3.2.1.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
     <script type=text/javascript>
@@ -22,11 +46,11 @@
         $('.navbar-collapse').collapse('hide');
       });
       /*
-       * Using jQuery's animate() method to add smooth page scroll
-       * - optional number (500) specifies # of milliseconds for scroll action
-       * - *: match on # char (only anchors).
-       * - \\#: is a special char in css selector, so escape it. 
-       */
+      * Using jQuery's animate() method to add smooth page scroll
+      * - optional number (500) specifies # of milliseconds for scroll action
+      * - *: match on # char (only anchors).
+      * - \\#: is a special char in css selector, so escape it. 
+      */
       var $root = $('html, body');
       $('a[href*=\\#]').on('click', function(event){
         if ( $(this.hash).length ) {
@@ -35,33 +59,9 @@
         };
       });
     </script>
-  </head>
-  <body>
+
     <div class="container-fluid">
-
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-              <span class="sr-only">menu</span>
-              <span class="icon-bar top-bar"></span>
-              <span class="icon-bar middle-bar"></span>
-              <span class="icon-bar bottom-bar"></span>
-            </button>
-          </div> <!-- /.navbar-header -->
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="navbar">
-            <ul class="nav navbar-nav">
-              <li><a href={{ url_for('base.home') }}>home</a></li>
-              <li><a href="/static/derek_marsh_resume.pdf">resume</a></li>
-              <li><a href={{ url_for('base.home', _anchor="code") }}>code samples</a></li>
-              <li><a href={{ url_for('base.home', _anchor="contact") }}>contact</a></li>
-            </ul>
-          </div> <!-- /.navbar-collapse -->
-        </div>
-      </nav>
-
-      <div class="row" id="notify">
+      <div class="row row-no-gutters" id="notify">
         {% for message in get_flashed_messages() %}
           <div class="flash">{{ message }}</div>
         {% endfor %}
@@ -69,25 +69,25 @@
           <p class="error"><strong>Error:</strong> {{ error }}
         {% endif %}
       </div>
-      <div class="row" id="main">
+      <div class="row row-no-gutters" id="main">
         <!-- inheritance -->
         {% block content %}
         {% endblock %}
         <!-- end inheritance -->
-      </div> <!-- /main -->
-      <div class="row" id="footer">
-        <div class="col-xs-2 col-xs-offset-8">
-          <a href="https://www.github.com/dmarsh19">
-            <i class="fa fa-github fa-3x"></i>
-          </a>
-        </div>
-        <div class="col-xs-2">
-          <a href="https://www.linkedin.com/in/derek-marsh-b03450a7">
-            <i class="fa fa-linkedin-square fa-3x"></i>
-          </a>
-        </div>
-      </div> <!-- /footer -->
-
+      </div>
     </div> <!-- /.container-fluid -->
+    <div class="container-fluid" id="footer">
+      <div class="col-xs-2 col-xs-offset-8">
+        <a href="https://www.github.com/dmarsh19">
+          <i class="fa fa-github fa-3x"></i>
+        </a>
+      </div>
+      <div class="col-xs-2">
+        <a href="https://www.linkedin.com/in/derek-marsh-b03450a7">
+          <i class="fa fa-linkedin-square fa-3x"></i>
+        </a>
+      </div>
+    </div> <!-- /footer -->
+
   </body>
 </html>

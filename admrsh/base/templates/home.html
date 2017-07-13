@@ -1,17 +1,17 @@
 {% extends "template.html" %}
 {% block content %}
-<div class="content onepage" id="summary">
+<div class="container one-page" id="summary">
   <div class="jumbotron">
     <h1 align="center">Welcome to admrsh.com</h1>
     <!-- <p>Welcome! I'm glad something picqued Please take a look around. You can find some additional information about what's important to me both professionally and personally. There are a few code samples that highlight...
     Hopefully you made it to this site on purpose. If so, thanks for...</p> -->
   </div>
 </div>
-<div class="content onepage" id="code" style="border-style: solid; border-color: #8f8f8f #ffffff #8f8f8f #ffffff;">
+<div class="container one-page" id="code" style="border-style: solid; border-color: #8f8f8f #ffffff #8f8f8f #ffffff;">
   <div class="page-header">
     <h1 align="center">Code Samples</h1>
   </div>
-  <div class="row no-gutters">
+  <div class="row row-no-gutters">
     <div class="col-12">
       <a href={{ url_for('code.socket_chat') }} class="thumbnail">
         <img src="..." alt="Socket Chat">
@@ -24,7 +24,7 @@
     </div>
   </div> <!-- /.row -->
 </div> <!-- /code -->
-<div class="content onepage" id="contact">
+<div class="container one-page" id="contact">
   <div class="page-header">
     <h1 align="center">Contact</h1>
   </div>
