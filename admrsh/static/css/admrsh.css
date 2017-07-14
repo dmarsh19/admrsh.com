@@ -1,11 +1,13 @@
 .one-page {
   height: 1000px;
-  padding-top: 30px;
+  padding-top: 52px;
 }
 
 #footer {
   background-color: #32302F;
   color: white;
+  height: 120px;
+  padding-top: 20px;
 }
 
 .navbar-default {
