@@ -5,12 +5,19 @@ sudo git clone https://github.com/dmarsh19/admrsh.com.git admrsh.com_project
 #change server_name in admrsh.com.nginx
 #add resume to server under admrsh/static/
 #sudo nano settings.py
-#  import os
-#  basedir = os.path.abspath(os.path.dirname(__file__))
-#  DEBUG = True
-#  SECRET_KEY = 
-#  SQLALCHEMY_DATABASE_URI = 'sqlite:///{}/atmo.sqlite'.format(basedir)
-#  SQLALCHEMY_ECHO = True
+# import os
+# basedir = os.path.abspath(os.path.dirname(__file__))
+# DEBUG = True
+# SECRET_KEY = 
+# SQLALCHEMY_DATABASE_URI = 'sqlite:///{}/atmo.sqlite'.format(basedir)
+# SQLALCHEMY_ECHO = True
+# Yahoo SMTP settings
+# SMTP_USER = 
+# SMTP_PASSWD = 
+# SMTP_SERVER = 
+# SMTP_PORT = 
+# EMAIL_ADDR = 
+
 #cd ..
 ./admrsh.com_project/deploy.sh
 #in browser, navigate to url

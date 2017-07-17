@@ -28,7 +28,7 @@
   <div class="page-header">
     <h1 align="center">Contact</h1>
   </div>
-  <form action="{{ url_for('.email') }}" method="POST">
+  <form action="{{ url_for('.email') }}" id="emailForm">
     <div class="form-group">
       <label class="sr-only" for="emailAddress">Email address</label>
       <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Email">
@@ -41,16 +41,36 @@
       <label class="sr-only" for="emailMessage">Email message</label>
       <textarea class="form-control" id="emailMessage" name="emailMessage" placeholder="Message" rows="3"></textarea>
     </div>
-    <button type="submit" class="btn btn-default" id="emailSubmit">Send</button>
+    <button type="submit" class="btn btn-default">Send</button>
   </form>
 </div> <!-- contact -->
 
-<script=text/javascript>
-  $("#emailSubmit").submit(function( event ) {
-      event.preventDefault();
-      var form = $( this ),
-        url = form.attr( "action" );
-      $.post( url, form.serialize() );
+<script type=text/javascript>
+  $("#emailForm").submit(function( event ) {
+    event.preventDefault();
+    var $form = $( this ),
+      url = $form.attr( "action" );
+    $.post( url, $form.serialize() )
+      .always(function() {
+        if (document.getElementById('alertSpacer') == null) {
+          $('body').prepend("<div id='alertSpacer' style='height: 52px;'></div>");
+        };
+      })
+      .fail(function() {
+        if (document.getElementById('emailAlert') != null) {
+          document.getElementById('emailAlert').remove();
+        };
+        $('#alertSpacer').after("<div class='alert alert-danger' id='emailAlert' role='alert'>Please fill out all fields and try again</div>");
+        $root.animate({ scrollTop: 0 }, 500);
+      })
+      .done(function( data ) {
+        document.getElementById("emailForm").reset();
+        if (document.getElementById('emailAlert') != null) {
+          document.getElementById('emailAlert').remove();
+        };
+        $('#alertSpacer').after("<div class='alert alert-success' id='emailAlert' role='alert'>" + data + "</div>");
+        $root.animate({ scrollTop: 0 }, 500);
+      });
   });
 </script>
 {% endblock %}

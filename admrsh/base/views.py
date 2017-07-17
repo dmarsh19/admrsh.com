@@ -1,7 +1,7 @@
 from smtplib import SMTP
 from email.mime.text import MIMEText
 
-from flask import render_template, request, flash, redirect, url_for
+from flask import render_template, request, flash, redirect, url_for, abort
 
 from admrsh import app
 from . import base_bp
@@ -30,3 +30,5 @@ def email():
         s.quit()
     #     flash("Message Sent!")
     # return redirect(url_for('.home'))
+        return "Message Sent!"
+    abort(400)
