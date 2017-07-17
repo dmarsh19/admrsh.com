@@ -14,33 +14,32 @@ $.datepicker.setDefaults({
 var chartData = {
     labels: [],
     datasets: [{
-    label: 'temperature',
-    data: [],
-    // line color; red, opacity: 40%
-    borderColor: "rgba(255, 0, 0, 0.4)",
-    pointBorderColor: "rgba(255, 0, 0, 0.6)",
-    pointBackgroundColor: "rgba(255, 0, 0, 0.6)",
-    pointHoverBorderColor: "rgba(255, 0, 0, 1)",
-    pointHoverBackgroundColor: "rgba(255, 0, 0, 1)"
-    },
-    {
-    label: 'humidity',
-    data: [],
-    // line color; blue, opacity: 40%
-    borderColor: "rgba(0, 0, 255, 0.4)",
-    pointBorderColor: "rgba(0, 0, 255, 0.6)",
-    pointBackgroundColor: "rgba(0, 0, 255, 0.6)",
-    pointHoverBorderColor: "rgba(0, 0, 255, 1)",
-    pointHoverBackgroundColor: "rgba(0, 0, 255, 1)"
-    }]
-  },
+        label: 'temperature',
+        data: [],
+        // line color; red, opacity: 40%
+        borderColor: "rgba(255, 0, 0, 0.4)",
+        pointBorderColor: "rgba(255, 0, 0, 0.6)",
+        pointBackgroundColor: "rgba(255, 0, 0, 0.6)",
+        pointHoverBorderColor: "rgba(255, 0, 0, 1)",
+        pointHoverBackgroundColor: "rgba(255, 0, 0, 1)"
+        },
+        {
+        label: 'humidity',
+        data: [],
+        // line color; blue, opacity: 40%
+        borderColor: "rgba(0, 0, 255, 0.4)",
+        pointBorderColor: "rgba(0, 0, 255, 0.6)",
+        pointBackgroundColor: "rgba(0, 0, 255, 0.6)",
+        pointHoverBorderColor: "rgba(0, 0, 255, 1)",
+        pointHoverBackgroundColor: "rgba(0, 0, 255, 1)"
+        }]},
   ctx = document.getElementById('lineChart').getContext("2d"),
   lineChart = new Chart(ctx, { type: 'line', data: chartData }),
   startAt = $( "#startAt" ).datepicker().on( "change", function() {
-    endAt.datepicker( "option", "minDate", getDate( this ) );
+        endAt.datepicker( "option", "minDate", getDate( this ) );
   }),
   endAt = $( "#endAt" ).datepicker().on( "change", function() {
-    startAt.datepicker( "option", "maxDate", getDate( this ) );
+      startAt.datepicker( "option", "maxDate", getDate( this ) );
   });
 
 function asyncDrawChart(apiUrl) {
