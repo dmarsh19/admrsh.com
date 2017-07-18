@@ -2,25 +2,62 @@
 {% block content %}
 <div class="container-fluid one-page" id="summary">
   <div class="jumbotron">
-    <h1 align="center">Welcome to admrsh.com</h1>
+    <h2>Hello and welcome!</h2>
+    <p>No doubt you arrived here on purpose and if so, thank you for the continued interest. This site was built in order for you to learn more about me and my professional interests and in appreciation that there's more to that than what fits on a resume&#768;. As such, I have provided a more personal background and included a few project samples that emphasize what I'm passionate about in the world of development. If it sounds like our interest align, I look forward to hearing from you!
+    <br>
+    - Derek Marsh
+    </p>
   </div>
-    <!-- <p>Welcome! I'm glad something picqued Please take a look around. You can find some additional information about what's important to me both professionally and personally. There are a few code samples that highlight...
-    Hopefully you made it to this site on purpose. If so, thanks for...</p> -->
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <h3>The Highlights</h3>
+      <ul>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="thumbnail">
+        <img src="..." alt="family" class="img-circle">
+        <div class="caption">
+          <h3>About Me</h3>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p><!-- background & interest --></p>
+    </div>
+  </div>
 </div> <!-- summary -->
-<div class="container one-page" id="code" style="border-style: solid; border-color: #8f8f8f #ffffff #8f8f8f #ffffff;">
+<div class="container one-page" id="code">
   <div class="page-header">
     <h1 align="center">Code Samples</h1>
   </div>
   <div class="row">
     <div class="col-md-6">
-      <a href={{ url_for('code.socket_chat') }} class="thumbnail">
-        <img src="..." alt="Socket Chat">
-      </a>
+      <div class="thumbnail text-center">
+        <a href={{ url_for('code.socket_chat') }}>
+          <img src="..." alt="Socket Chat">
+        </a>
+        <div class="caption">
+          <h3>Socket Chat</h3>
+          <p>A portable, lightweight LAN Messenger</p>
+        </div>
+      </div>
     </div>
     <div class="col-md-6">
-      <a href={{ url_for('code.atmo') }} class="thumbnail">
-        <img src="..." alt="atmo">
-      </a>
+      <div class="thumbnail text-center">
+        <a href={{ url_for('code.atmo') }}>
+          <img src="..." alt="atmo">
+        </a>
+        <div class="caption">
+          <h3>atmo</h3>
+          <p>Visualizing sensor data from a Raspberry Pi</p>
+        </div>
+      </div>
     </div>
   </div>
 </div> <!-- code -->
