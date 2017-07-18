@@ -5,12 +5,12 @@
 
 #footer {
   background-color: #32302F;
-  color: white;
-  height: 120px;
+  color: #999;
   padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-.navbar-default {
+.navbar-default { 
   background-color: #ffffff;
 }
 
