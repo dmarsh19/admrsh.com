@@ -3,33 +3,40 @@
 <div class="container-fluid one-page" id="summary">
   <div class="jumbotron">
     <h2>Hello and welcome!</h2>
-    <p>No doubt you arrived here on purpose and if so, thank you for the continued interest. This site was built in order for you to learn more about me and my professional interests and in appreciation that there's more to that than what fits on a resume&#768;. As such, I have provided a more personal background and included a few project samples that emphasize what I'm passionate about in the world of development. If it sounds like our interest align, I look forward to hearing from you!</p>
+    <p>Thank you for your continued interest! Please use the personal background and project samples I have provided to learn more about me, my professional interests, and what I'm passionate about in the world of software development. If it sounds like our interests align, I look forward to hearing from you!</p>
     <p class="text-right">- Derek Marsh</p>
+    <p><a class="btn btn-primary btn-lg" href="{{ url_for('code.socketchat') }}" role="button">Just take me to the code sample!</a></p>
   </div>
   <div class="row">
     <div class="col-xs-12 col-md-6">
-      <h3>The Highlights</h3>
+      <h3>Just the Highlights</h3>
       <ul>
-        <li>I am not a web designer (Bootstrap is a dream come true!)</li>
-        <li>I use Git for <en>everything</en>.</li>
-        <li>I can exit Vim on the first try ;)</li>
-        <li>Code is dynamic; no application is ever finished. This is both a good and a bad thing.</li>
         <li></li>
+        <li>I can exit Vim on the first try ;)</li>
+      </ul>
+      <h4>A few words of wisdom</h4>
+      <ul>
+        <li>All projects, no matter how small, start under source control. Thank yourself later.</li>
+        <li>Style guides save time in the long run. Linting keeps you focused on the content.</li>
+        <li>Process documentation is proof it wasn't a fluke.</li>
+        <li>Code is dynamic & never complete. It should be capable of growth & change.</li>
       </ul>
     </div>
     <div class="col-xs-12 col-md-6">
       <div class="thumbnail text-center">
-        <img src="..." alt="family" class="img-circle">
+        <img src="..." alt="About Me" class="img-circle">
         <div class="caption">
           <h3>About Me</h3>
-          <p></p>
+          <p>Geographer turned software developer.<br>Homebrewer. Tennis fan. Backpacker.<br>Happily married. Happily living in Atlanta, GA.</p>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <p><!-- background & interest --></p>
+      <p>My interest in software development began in undergrad using Geographic Information System (GIS) software and Python programming to automate spatial analysis. Through my graduate work, I had the opportunity to analyze differences in web navigation routing websites like Google Maps, MapQuest, and Bing Maps. I My small automation scripts led into the broader field of GIS development, particularly Web GIS technologies. Soon I was using AWS to stand up web & database server instances
+      
+      Network programming. message queues. server-side web development. </p>
     </div>
   </div>
 </div> <!-- summary -->
@@ -65,6 +72,7 @@
 <div class="container one-page" id="contact">
   <div class="page-header">
     <h1 align="center">Contact</h1>
+    <p>For your convenience, you can use the form below to reach me!</p>
   </div>
   <form action="{{ url_for('.email') }}" id="emailForm">
     <div class="form-group">
