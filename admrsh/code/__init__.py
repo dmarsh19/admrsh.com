@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-base_bp = Blueprint('base', __name__,
+code_bp = Blueprint('code', __name__,
                     template_folder='templates')
 
 from . import views

@@ -4,9 +4,10 @@ server {
     # Define the specified charset to the "Content-Type" response header field
     charset utf-8;
 
-    # Configure NGINX to deliver static content from the specified folder
+    # Configure NGINX to deliver static content from multiple folders
     location /static/ {
-        alias /var/www/admrsh.com_project/admrsh/static/;
+        root /var/www/admrsh.com_project/admrsh;
+        try_files $uri /code$uri =404;
     }
 
     location / {

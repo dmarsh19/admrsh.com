@@ -1,0 +1,58 @@
+{% extends "template.html" %}
+{% block content %}
+<link href="/static/css/jquery-ui.css" rel="stylesheet">
+<div class="container one-page">
+  <div class="page-header">
+    <h1 align="center">atmo <small>Visualizing sensor data from a Raspberry Pi.</small></h1>
+  </div>
+  <strong>Issues:</stong>
+  <p>Doesn't show times in labels and tooltips for simplicity sake.</p>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <div class="dropdown">
+        <button class="btn btn-block btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">atmo API <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="{{ url_for('api.atmo') }}">all</a></li>
+          <li><a href="{{ url_for('api.atmo', startAt='2016-12-20', endAt='2016-12-25') }}">range</a></li>
+          <li><a href="{{ url_for('api.atmo') }}/2016-12-20T18:00">single</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-3">
+      <input type="text" class="form-control" id="startAt" placeholder="Start Date (MM/DD/YYYY)">
+    </div>
+    <div class="col-md-3">
+      <input type="text" class="form-control" id="endAt" placeholder="End Date (MM/DD/YYYY)">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <button id="datepickerSubmit" type="button" class="btn btn-block btn-default">Submit</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <canvas id="lineChart" height="450" width="800"></canvas>
+    </div>
+  </div>
+</div> <!-- container one-page -->
+
+<script src="/static/js/Chart.min.js"></script>
+<script src="/static/js/jquery-ui.min.js"></script>
+<script src="/static/js/atmo.js"></script>
+
+<script type=text/javascript>
+  $(document).ready(function() {
+    asyncDrawChart("{{ url_for('api.atmo') }}");
+  });
+
+  $("#datepickerSubmit").on( "click", function() {
+    var sd = startAt.datepicker( "getDate" ).toISOString(),
+      ed = endAt.datepicker( "getDate" ).toISOString();
+    asyncDrawChart("{{ url_for('api.atmo') }}?startAt=" + sd + "&endAt=" + ed);
+  });
+</script>
+{% endblock %}

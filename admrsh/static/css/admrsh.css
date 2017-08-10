@@ -1,0 +1,72 @@
+.one-page {
+  height: 1000px;
+  padding-top: 52px;
+}
+
+#footer {
+  background-color: #32302F;
+  color: #999;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar-default { 
+  background-color: #ffffff;
+}
+
+/*uncollapsed navbar*/
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
+/*dropdown*/
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+/*collapsed navbar; i.e. button
+apply the rotation 'X' on default .navbar-toggle
+since on load it is .navbar-toggle.collapsed*/
+.navbar-toggle {
+  width: 100%;
+  float: none;
+  border: none;
+  background: transparent !important;
+}
+.navbar-toggle:hover {
+  background: transparent !important;
+}
+.navbar-toggle .icon-bar {
+  margin: auto;
+  width: 22px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.navbar-toggle .top-bar {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: 10% 10%;
+          transform-origin: 10% 10%;
+}
+.navbar-toggle .middle-bar {
+  opacity: 0;
+}
+.navbar-toggle .bottom-bar {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transform-origin: 10% 90%;
+          transform-origin: 10% 90%;
+}
+/*Collapsed behavior - revert back to regular menu button*/
+.navbar-toggle.collapsed .top-bar {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.navbar-toggle.collapsed .middle-bar {
+  opacity: 1;
+}
+.navbar-toggle.collapsed .bottom-bar {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
